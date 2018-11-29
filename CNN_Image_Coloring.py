@@ -7,7 +7,7 @@ import webbrowser
 def CNN():
     # Lendo os arquivos das imagens
     frames = []
-    for i in range(1,14):
+    for i in range(1,19):
         print("Teste {}:".format(i))
         path = "input/{}.jpg".format(i)
         frame = cv2.imread(path)
@@ -48,6 +48,9 @@ def CNN():
             img_l_rs -= 50 # Subtraindo 50  para o media dos centros
 
             # Carregando a CNN do tipo Blob e Coletando os Resultados
+			# Que cria uma borrão de 4 dimenções. Que pode redimenciona e corta a 
+			# imagem do centro, sobtrair os valores médios, dimensiona os valores
+			# por escalator, troca os canais Azul e Vermelho
             net.setInput(cv2.dnn.blobFromImage(img_l_rs))
             ab_dec = net.forward()[0,:,:,:].transpose((1,2,0))
 
